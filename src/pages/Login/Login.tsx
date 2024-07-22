@@ -3,10 +3,10 @@ import Button from '../../components/Button/Button';
 import Headling from '../../components/Headling/Headling';
 import Input from '../../components/Input/Input';
 import styles from './Login.module.css';
-import { FormEvent, useState } from 'react';
-import axios, { AxiosError } from 'axios';
-import { PREFIX } from '../../helpers/API';
-import { LoginResponse } from '../../interfaces/auth.interface';
+import { FormEvent, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispath, RootState } from '../../store/store';
+import { login, userActions } from '../../store/user.slice';
 
 export type LoginForm = {
 	email: {
@@ -18,36 +18,31 @@ export type LoginForm = {
 }
 
 export function Login() {
-	const [error, setError] = useState<string | null>();
 	const navigate = useNavigate();
+	const dispatch = useDispatch<AppDispath>();
+	const { jwt, loginErrorMessage } = useSelector((s: RootState) => s.user);
+
+	useEffect(() => {
+		if (jwt) {
+			navigate('/');
+		}
+	}, [jwt, navigate]);
 
 	const submit = async (e: FormEvent) => {
 		e.preventDefault();
-		setError(null);
+		dispatch(userActions.clearLoginError());
 		const target = e.target as typeof e.target & LoginForm;
 		const { email, password } = target;
 		await sendLogin(email.value, password.value);
 	};
 
 	const sendLogin = async (email: string, password: string) => {
-		try {
-			const { data } = await axios.post<LoginResponse>(`${PREFIX}/auth/login`, {
-				email,
-				password
-			});
-			localStorage.setItem('jwt', data.access_token);
-			navigate('/');
-		} catch (e) {
-			if (e instanceof AxiosError) {
-				setError(e.response?.data.message);
-			}
-		}
-
+		dispatch(login({ email, password }));
 	};
 
 	return <div className={styles['login']}>
 		<Headling>Вход</Headling>
-		{error && <div className={styles['error']}>{error}</div>}
+		{loginErrorMessage && <div className={styles['error']}>{loginErrorMessage}</div>}
 		<form className={styles['form']} onSubmit={submit}>
 			<div className={styles['field']}>
 				<label htmlFor="email">Ваш email</label>
