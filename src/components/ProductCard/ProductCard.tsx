@@ -17,7 +17,10 @@ function ProductCard(props: ProductCardProps) {
 	return (
 		<Link to={`/product/${props.id}`} className={styles['link']}>
 			<div className={styles['card']}>
-				<div className={styles['head']} style={{ backgroundImage: `url('${props.image}')` }}>
+				<div
+					className={styles['head']}
+					style={{ background: `url('${props.image}') center no-repeat` }}
+				>
 					<div className={styles['price']}>
 						{props.price}&nbsp;
 						<span className={styles['currency']}>₽</span>
