@@ -6,9 +6,11 @@
   --text-secondary-color: #5B5B5E;
   --white-color: #FFFFFF;
   --separator-color: #D4D6E0;
+
+  --hover-shadow: 0px 6px 24px 0px rgba(254, 114, 76, 0.20);
 }
 
 body {
-	font-family: 'Open Sans', sans-serif;
-	margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
 }

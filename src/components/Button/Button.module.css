@@ -23,8 +23,13 @@
 
 .accent {
 	background: var(--primary-color);
+	transition: transform 0.1s;
 }
 
 .accent:hover {
 	background: var(--primary-hover-color);
+}
+
+.accent:active {
+	transform: scale(0.95);
 }
