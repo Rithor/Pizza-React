@@ -1,12 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
-import Button from "../../components/Button/Button";
-import Headling from "../../components/Headling/Headling";
-import Input from "../../components/Input/Input";
+import Button from "@src/components/Button/Button";
+import Input from "@src/components/Input/Input";
 import styles from "../Login/Login.module.css";
 import { FormEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../store/store";
-import { register, userActions } from "../../store/user.slice";
+import { AppDispatch, RootState } from "@src/store/store";
+import { register, userActions } from "@src/store/user.slice";
+import Headline from "@src/components/Headline/Headline";
 
 export type RegisterForm = {
   email: {
@@ -47,7 +47,7 @@ export function Register() {
 
   return (
     <div className={styles["login"]}>
-      <Headling>Регистрация</Headling>
+      <Headline>Регистрация</Headline>
       {registerErrorMessage && (
         <div className={styles["error"]}>{registerErrorMessage}</div>
       )}
@@ -69,10 +69,10 @@ export function Register() {
           <label htmlFor="name">Ваше имя</label>
           <Input id="name" name="name" placeholder="Имя" />
         </div>
-        <Button appearence="big">Зарегистрироваться</Button>
+        <Button appearance="big">Зарегистрироваться</Button>
       </form>
       <div className={styles["links"]}>
-        <div>Есть акканут?</div>
+        <div>Есть аккаунт?</div>
         <Link to="/auth/login">Войти</Link>
       </div>
     </div>

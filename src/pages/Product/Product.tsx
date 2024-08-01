@@ -1,14 +1,15 @@
-import { Await, Link, useLoaderData } from "react-router-dom";
-import { IProduct } from "../../interfaces/product.interface";
 import { Suspense } from "react";
-import backIcon from "../../../public/back-icon.svg";
-import Headling from "../../components/Headling/Headling";
-import styles from "./Product.module.css";
-import Button from "../../components/Button/Button";
+import { Await, Link, useLoaderData } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../store/store";
-import { cartActions } from "../../store/cart.slice";
-import cartIcon from "../../../public/cart-button-icon.svg";
+import { AppDispatch } from "@src/store/store";
+import { cartActions } from "@src/store/cart.slice";
+import styles from "./Product.module.css";
+import { IProduct } from "@src/interfaces/product.interface";
+import Headline from "@src/components/Headline/Headline";
+import Button from "@src/components/Button/Button";
+import backIcon from "@images/back-icon.svg";
+import cartIcon from "@images/cart-button-icon.svg";
+import starIcon from "@images/star-icon.svg";
 
 export function Product() {
   const { data } = useLoaderData() as { data: IProduct };
@@ -28,7 +29,7 @@ export function Product() {
                     alt="В Меню"
                   />
                 </Link>
-                <Headling>{data.name}</Headling>
+                <Headline>{data.name}</Headline>
                 <Button
                   className={styles["addToCart"]}
                   onClick={() => {
@@ -55,7 +56,7 @@ export function Product() {
                     <div className={styles.price}>Рейтинг</div>
                     <div className={styles["rating-value"]}>
                       {data.rating}&nbsp;
-                      <img src="/star-icon.svg" alt="Иконка звезды" />
+                      <img src={starIcon} alt="Иконка звезды" />
                     </div>
                   </div>
                   <div className={styles["ingredients-wr"]}>

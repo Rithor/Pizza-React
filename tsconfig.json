@@ -5,6 +5,10 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "paths": {
+      "@images/*": ["./src/images/*"],
+      "@src/*": ["./src/*"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",

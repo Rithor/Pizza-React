@@ -8,6 +8,8 @@
 	border-right: 1px solid var(--separator-color);
 	display: flex;
 	flex-direction: column;
+	position: fixed;
+	height: 100vh;
 }
 
 .exit {
@@ -69,6 +71,7 @@
 .content {
 	padding: 40px 60px;
 	width: 100%;
+	margin-left: 200px;
 }
 
 .cart-count {
