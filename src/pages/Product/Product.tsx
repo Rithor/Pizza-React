@@ -17,7 +17,13 @@ export function Product() {
 
   return (
     <>
-      <Suspense fallback={"Загружаю..."}>
+      <Suspense
+        fallback={
+          <div className="notification">
+            <div>Загрузка...</div>
+          </div>
+        }
+      >
         <Await resolve={data}>
           {({ data }: { data: IProduct }) => (
             <section className={styles.wrapper}>

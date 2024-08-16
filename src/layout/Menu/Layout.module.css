@@ -4,12 +4,15 @@
 }
 
 .sidebar {
-	padding: 30px;
-	border-right: 1px solid var(--separator-color);
 	display: flex;
 	flex-direction: column;
 	position: fixed;
 	height: 100vh;
+	z-index: 2;
+	padding: 30px;
+	box-sizing: border-box;
+	border-right: 1px solid var(--separator-color);
+	background: #fff;
 }
 
 .exit {
