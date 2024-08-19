@@ -4,7 +4,7 @@ Pizza-React – интерактивное веб-приложение для з
 
 Проект разработан с использованием учебного API в рамках курса по React, React Router и Redux Toolkit.
 
-[Check the Live Demo](https://pizza.2923733-lt72291.twc1.net)
+[Check the Live Demo](http://pizza.2923733-lt72291.twc1.net)
 
 ## Stack
 
